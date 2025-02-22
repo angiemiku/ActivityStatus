@@ -4,6 +4,7 @@ const express = require('express')
 const server = express();
 
 ////////////////////////////////////////////////////////////////
+const port = 3000; //Port
 const Type = "PLAYING" //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
 const Name = "Genshin Impact"
 const Status = "idle" //online / idle / dnd / invisible
