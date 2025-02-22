@@ -8,7 +8,7 @@ const port = 3000; //Port
 const type = "PLAYING"; //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
 const name = "Genshin Impact";
 const status = "idle"; //online / idle / dnd / invisible
-const TOKEN = proccess.env.TOKEN || "DISCORD TOKEN HERE": //Your discord account TOKEN
+const token = proccess.env.token || "DISCORD TOKEN HERE"; //Your discord account TOKEN
 //////////////////////////////////////////////////////////////
 
 
@@ -28,4 +28,4 @@ client.on("ready", () => {
   client.user.setPresence({ activities: [pr], status: status });
 });
 
-client.login(TOKEN);
+client.login(token);
