@@ -5,9 +5,9 @@ const server = express();
 
 ////////////////////////////////////////////////////////////////
 const port = 3000; //Port
-const Type = "PLAYING" //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
-const Name = "Genshin Impact"
-const Status = "idle" //online / idle / dnd / invisible
+const type = "PLAYING"; //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
+const name = "Genshin Impact";
+const status = "idle"; //online / idle / dnd / invisible
 const TOKEN = proccess.env.TOKEN || "DISCORD TOKEN HERE": //Your discord account TOKEN
 //////////////////////////////////////////////////////////////
 
@@ -22,10 +22,10 @@ app.listen(port, () => {
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.username}`)
   const pr = new RichPresence(client)
-    .setType(Type)
-    .setName(Name)
+    .setType(type)
+    .setName(name)
     .setStartTimestamp("" || Date.now());
-  client.user.setPresence({ activities: [pr], status: Status });
+  client.user.setPresence({ activities: [pr], status: status });
 });
 
 client.login(TOKEN);
