@@ -1,31 +1,27 @@
-const { Client, RichPresence } = require("discord.js-selfbot-v13");
-const client = new Client();
-const express = require('express')
-const server = express();
+const { Client, RichPresence } = require("discord.js-selfbot-v13"),
+  client = new Client(),
+  express = require('express'),
+  server = express();
 
-////////////////////////////////////////////////////////////////
-const port = 3000; //Port
-const type = "PLAYING"; //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
-const name = "Genshin Impact";
-const status = "idle"; //online / idle / dnd / invisible
-const token = proccess.env.token || "DISCORD TOKEN HERE"; //Your discord account TOKEN
-//////////////////////////////////////////////////////////////
+app.get('/', (req, res) => { res.send('Hello world!') });
+app.listen(3000, () => { console.log('Listening on port: 3000'); });
 
 
-app.get('/', (req, res) => {
-  res.send('Success!!')
-});
-app.listen(port, () => {
-  console.log(`Listening to port: ${port}`);
-});
-
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.username}`)
-  const pr = new RichPresence(client)
-    .setType(type)
-    .setName(name)
-    .setStartTimestamp("" || Date.now());
-  client.user.setPresence({ activities: [pr], status: status });
+client.on('ready', () => {
+  console.log(`Logged In as ${client.user.username}`)
+  const r = new RichPresence(client)
+    .setApplicationId('1257819671114289184') //https://discord.com/api/v10/applications/detectable
+    .setType('PLAYING') //PLAYING / LISTENING / WATCHING / STREAMING / COMPETING
+    //.setURL("") //For STREAMING type
+    .setName("Zenless Zone Zero")
+    .setStartTimestamp("" || Date.now())
+    //.setPlatform('desktop') //desktop / ps4 / ps5 / xbox
+    //.addButton("Button1", "https://www.youtube.com")
+    //.addButton("Button2", "https://www.google.com")
+  const c = new CustomStatus(client)
+    .setEmoji('🐱')
+    .setState("meow");
+  client.user.setPresence({ activities: [r, c], status: 'idle' });
 });
 
-client.login(token);
+client.login(process.env.TOKEN || ""); //Your discord account TOKEN
